@@ -1,5 +1,6 @@
 package com.example.orienteur
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
@@ -13,8 +14,18 @@ class LocalSelectionActivity : AppCompatActivity() {
 
         val localSpinner: Spinner = findViewById(R.id.localSpinner)
 
+        val endLocal = intent.getStringExtra("END_LOCAL")
+
         // Configurer le Spinner avec les options de locaux
-        val localOptions = arrayOf("Local 1", "Local 2", "Local 3")
+        val localOptions = arrayOf(
+            "A-2090 - L'Agora",
+            "A-2078 - L'Apostrophe",
+            "A-2185 - Socioculturel",
+            "A-2179 - Services Psychosociaux",
+            "A-2357 - Bureau de la recherche",
+            "A-2154 - Labo informatique",
+            "D-2500 - Bibliothèque")
+
         val localAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, localOptions)
         localAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         localSpinner.adapter = localAdapter
@@ -22,7 +33,12 @@ class LocalSelectionActivity : AppCompatActivity() {
         // Gestion du clic sur le bouton
         val selectLocalButton: Button = findViewById(R.id.selectLocalButton)
         selectLocalButton.setOnClickListener {
-        // Logique à exécuter après la sélection du local
+            val selectedStartPoint = localSpinner.selectedItem.toString()
+            val resultIntent = Intent(this, ResultActivity::class.java).apply {
+                putExtra("START_LOCAL", selectedStartPoint)
+                putExtra("END_LOCAL", endLocal)
+            }
+            startActivity(resultIntent)
         }
     }
 }

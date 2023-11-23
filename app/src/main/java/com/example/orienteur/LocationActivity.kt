@@ -38,6 +38,7 @@ class LocationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_location)
 
+        val endLocal = intent.getStringExtra("END_LOCAL")
         wifiManager = applicationContext.getSystemService(Context.WIFI_SERVICE) as WifiManager
 
         // Vérifiez si les permissions sont déjà accordées
@@ -51,22 +52,22 @@ class LocationActivity : AppCompatActivity() {
             startWifiScan()
         }
 
-        val localButton: Button = findViewById(R.id.manualLocationButton) // Assurez-vous d'avoir un bouton avec cet ID dans votre layout
+        val localButton: Button = findViewById(R.id.manualLocationButton)
         localButton.setOnClickListener {
             val intent = Intent(this, LocalSelectionActivity::class.java)
+            intent.putExtra("END_LOCAL", endLocal)
             startActivity(intent)
         }
 
-        val resultButton: Button = findViewById(R.id.wifiLocationButton) // Assurez-vous d'avoir un bouton avec cet ID
+        val resultButton: Button = findViewById(R.id.wifiLocationButton)
         resultButton.setOnClickListener {
             if (scanResultText != null) {
-                val intent = Intent(this, ResultActivity::class.java).apply {
-                    putExtra("RESULT_TEXT", scanResultText)
-                }
+                val intent = Intent(this, ResultActivity::class.java)
+                intent.putExtra("START_LOCAL", scanResultText)
+                intent.putExtra("END_LOCAL", endLocal)
                 startActivity(intent)
             } else {
-                // Gérer le cas où les résultats ne sont pas encore disponibles
-                Toast.makeText(this, "Scan en cours.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Scan des réseaux en cours.", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -88,9 +89,10 @@ class LocationActivity : AppCompatActivity() {
             val network2 = results.find { it.SSID == "RASPBERRY_PI_NETWORK_2" }
 
             scanResultText = if (network1 != null && network2 != null) {
-                if (network1.level > network2.level) "Vous êtes dans le local 1" else "Vous êtes dans le local 2"
+                if (network1.level > network2.level) "A-2090 - L'Agora" else "A-2078 - L'Apostrophe"
             } else {
-                "Réseaux Raspbeery Pi non trouvés"
+                // Faux local pour l'instant, le simulateur ne peut pas scanner les réseaux WiFi
+                "A-2090 - L'Agora"
             }
         }
     }
