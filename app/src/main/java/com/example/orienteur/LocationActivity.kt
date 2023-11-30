@@ -57,6 +57,7 @@ class LocationActivity : AppCompatActivity() {
             val intent = Intent(this, LocalSelectionActivity::class.java)
             intent.putExtra("END_LOCAL", endLocal)
             startActivity(intent)
+            overridePendingTransition(R.anim.slide_in_scale_fade, R.anim.slide_out_scale_fade)
         }
 
         val resultButton: Button = findViewById(R.id.wifiLocationButton)
@@ -66,6 +67,7 @@ class LocationActivity : AppCompatActivity() {
                 intent.putExtra("START_LOCAL", scanResultText)
                 intent.putExtra("END_LOCAL", endLocal)
                 startActivity(intent)
+                overridePendingTransition(R.anim.slide_in_scale_fade, R.anim.slide_out_scale_fade)
             } else {
                 Toast.makeText(this, "Scan des réseaux en cours.", Toast.LENGTH_SHORT).show()
             }

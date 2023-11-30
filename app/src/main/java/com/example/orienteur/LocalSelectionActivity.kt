@@ -39,6 +39,7 @@ class LocalSelectionActivity : AppCompatActivity() {
                 putExtra("END_LOCAL", endLocal)
             }
             startActivity(resultIntent)
+            overridePendingTransition(R.anim.slide_in_scale_fade, R.anim.slide_out_scale_fade)
         }
     }
 }

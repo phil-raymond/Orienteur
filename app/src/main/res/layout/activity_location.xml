@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".LocationActivity">
 
     <Button
@@ -13,9 +14,15 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="225dp"
         android:layout_marginEnd="50dp"
+        android:backgroundTint="@color/purple_200"
+        android:textColor="@color/white"
+        android:elevation="4dp"
+        android:stateListAnimator="@null"
         android:padding="16dp"
-        android:text="Me localiser avec le WiFi"
+        android:fontFamily="sans-serif"
+        android:textStyle="bold"
         app:cornerRadius="50dp"
+        android:text="Me localiser avec le WiFi"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -27,9 +34,15 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="50dp"
+        android:backgroundTint="@color/purple_200"
+        android:textColor="@color/white"
+        android:elevation="4dp"
+        android:stateListAnimator="@null"
         android:padding="16dp"
-        android:text="Me localiser avec un numéro de local"
+        android:fontFamily="sans-serif"
+        android:textStyle="bold"
         app:cornerRadius="50dp"
+        android:text="Me localiser avec un numéro de local"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/wifiLocationButton" />

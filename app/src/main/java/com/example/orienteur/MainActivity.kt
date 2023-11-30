@@ -39,6 +39,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, LocationActivity::class.java)
             intent.putExtra("END_LOCAL", selectedDestination)
             startActivity(intent)
+            overridePendingTransition(R.anim.slide_in_scale_fade, R.anim.slide_out_scale_fade)
         }
     }
 

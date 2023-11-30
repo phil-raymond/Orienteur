@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/black"
+    >
 
     <TextView
         android:id="@+id/welcomeText"
@@ -12,6 +14,9 @@
         android:layout_height="wrap_content"
         android:text="Bienvenue sur l'Orienteur !"
         android:textSize="28sp"
+        android:fontFamily="sans-serif"
+        android:textStyle="bold"
+        android:textColor="@color/white"
         android:textAlignment="center"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,6 +29,9 @@
         android:layout_height="wrap_content"
         android:text="Où souhaitez-vous aller ?"
         android:textSize="20sp"
+        android:fontFamily="sans-serif"
+        android:textStyle="bold"
+        android:textColor="@color/white"
         android:textAlignment="center"
         app:layout_constraintTop_toTopOf="@+id/welcomeText"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,12 +59,18 @@
 
     <Button
         android:id="@+id/searchButton"
-        android:layout_width="150dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/purple_200"
+        android:textColor="@color/white"
+        android:elevation="4dp"
+        android:stateListAnimator="@null"
         android:padding="16dp"
+        android:fontFamily="sans-serif"
+        android:textStyle="bold"
+        app:cornerRadius="25dp"
+        android:layout_marginTop="50dp"
         android:text="Itinéraire"
-        app:cornerRadius="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/spinnerContainer" />
